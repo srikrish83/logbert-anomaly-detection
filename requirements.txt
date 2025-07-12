@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+torch
+transformers
+boto3
+kafka-python
+streamlit
+prometheus_client
+drain3
+scikit-learn
+pandas
+python-dotenv

@@ -1,0 +1,74 @@
+# config/config.yaml
+
+# General settings
+batch_interval_secs: 5
+entropy_threshold: 0.3
+distance_threshold: 19.98
+
+# S3 settings
+s3:
+  bucket_name: "logbert-model-artifacts"
+  region: "us-east-1"
+  access_key_id: "YOUR_AWS_ACCESS_KEY_ID"
+  secret_access_key: "YOUR_AWS_SECRET_ACCESS_KEY"
+  latest_model_key: "models/logbert_latest.pth"
+  previous_model_key: "models/logbert_previous.pth"
+  log_key_id_key: "models/log_key_to_id.pth"
+  center_vector_key: "models/center_vector.pt"
+
+# Kafka settings
+kafka:
+  bootstrap_servers: "localhost:9092"
+  input_topic: "log-input"
+  anomaly_topic: "log-anomaly"
+  group_id: "logbert-consumer-group"
+
+# Hugging Face
+huggingface:
+  model_name: "mistralai/Mistral-7B-Instruct-v0.1"
+  api_token: "hf_your_hf_token_here"
+
+# Prometheus
+prometheus:
+  enabled: true
+  port: 8001
+
+# FastAPI
+api:
+  host: "0.0.0.0"
+  port: 8000
+
+# Streamlit
+streamlit:
+  host: "0.0.0.0"
+  port: 8501
+
+data:
+  log_file: "/data/logs/training_logs.txt"
+  label_file: "/data/logs/anomaly_labels.txt"
+
+training:
+  batch_size: 16
+  learning_rate: 1e-4
+  epochs: 15
+
+model:
+  embed_dim: 256
+
+preprocessing:
+  seq_window: 10
+  dist_token_id: 0
+  max_seq_len: 50
+  dist_token_id: 0
+  mask_prob: 0.3
+  batch_size: 16
+  alpha: 1e-4
+
+drain3:
+  sim_th: 0.5
+  depth: 5
+  max_children: 100
+  extra_delimiters: "=|:|\\(|\\)|\\[|\\]|\"|,|\\{|\\}|\\s"
+  masking: true
+  mask_with: "<*>"
+  profile: false
