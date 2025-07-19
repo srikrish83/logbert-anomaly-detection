@@ -26,7 +26,7 @@ kafka:
 # Hugging Face
 huggingface:
   model_name: "mistralai/Mistral-7B-Instruct-v0.1"
-  api_token: "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"
+  api_token: "${HUGGINGFACE_API_TOKEN}"
 
 # Prometheus
 prometheus:
